@@ -24,41 +24,44 @@ This project demonstrates a simple **Continuous Integration and Continuous Deplo
 
 ```text
 👩‍💻 Developer
-      |
-      v
+     |
+     v
 🐙 GitHub Repository
-      |
-      v
+     |
+     v
 🤵 Jenkins Pipeline
-      |
-      +-------------------+
-      |        |          |
-      v        v          v
-   🏗️ Build  🧪 Test   🚀 Deploy
-      |        |          |
-      +--------+----------+
-               |
-               v
-       🐳 Docker Container
-               |
-               v
-     🌐 Nginx Web Application
-        http://localhost:8081
+     |
+     +-------------------+
+     |        |          |
+     v        v          v
+  🏗️ Build  🧪 Test   🚀 Deploy
+     |        |          |
+     +--------+----------+
+              |
+              v
+      🐳 Docker Container
+              |
+              v
+    🌐 Nginx Web Application
+       http://localhost:8081
 ```
 
 ## ⚙️ CI/CD Pipeline Stages
 
 ### 1️⃣ Build 🏗️
+
 - Jenkins retrieves the project files from GitHub.
 - Docker builds an image using the `Dockerfile`.
 - The image is tagged as `jenkins-demo:latest`.
 
 ### 2️⃣ Test 🧪
+
 - Checks that `index.html` exists.
 - Verifies that the expected success message is present.
 - Confirms that the Docker image was created successfully.
 
 ### 3️⃣ Deploy 🚀
+
 - Removes the previous application container, if present.
 - Starts a new container named `jenkins-demo-app`.
 - Maps host port `8081` to container port `80`.
@@ -68,16 +71,73 @@ This project demonstrates a simple **Continuous Integration and Continuous Deplo
 ```text
 jenkins-docker-cicd-elevate-labs/
 │
-├── 📄 Jenkinsfile
-├── 🐳 Dockerfile
-└── 🌐 index.html
+├── Jenkinsfile
+├── Dockerfile
+├── index.html
+├── README.md
+└── screenshots/
+    ├── 01-jenkins-pipeline-success.PNG
+    ├── 02-jenkins-pipeline-success.PNG
+    ├── 03-jenkins-pipeline-success.PNG
+    ├── 04-jenkins-pipeline-success.PNG
+    ├── 05-deployed-application.PNG
+    ├── 06-docker-container-running.PNG
+    ├── 07-jenkinsfile.PNG
+    ├── 08-github-repository.PNG
+    ├── 09-docker-desktop.PNG
+    └── 10-Dockerfile.PNG
 ```
 
-| File | Description |
+| File or folder | Description |
 |---|---|
 | `Jenkinsfile` | Defines the automated Build, Test, and Deploy stages |
 | `Dockerfile` | Defines how the Docker image is built |
 | `index.html` | Contains the web application's HTML and CSS |
+| `screenshots/` | Contains screenshots showing the project setup and verification |
+
+## 📸 Project Screenshots
+
+The following screenshots document the Jenkins CI/CD pipeline, deployed application, Docker container, and project files.
+
+### 1. Jenkins Pipeline — Successful Build
+
+![Jenkins Pipeline Success 1](screenshots/01-jenkins-pipeline-success.PNG)
+
+### 2. Jenkins Pipeline — Build Details
+
+![Jenkins Pipeline Success 2](screenshots/02-jenkins-pipeline-success.PNG)
+
+### 3. Jenkins Pipeline — Execution
+
+![Jenkins Pipeline Success 3](screenshots/03-jenkins-pipeline-success.PNG)
+
+### 4. Jenkins Pipeline — Final Verification
+
+![Jenkins Pipeline Success 4](screenshots/04-jenkins-pipeline-success.PNG)
+
+### 5. Deployed Web Application
+
+![Deployed Application](screenshots/05-deployed-application.PNG)
+
+### 6. Running Docker Container
+
+![Docker Container Running](screenshots/06-docker-container-running.PNG)
+
+### 7. Jenkinsfile — Pipeline Configuration
+
+![Jenkinsfile](screenshots/07-jenkinsfile.PNG)
+
+### 8. GitHub Repository
+
+![GitHub Repository](screenshots/08-github-repository.PNG)
+
+### 9. Docker Desktop
+
+![Docker Desktop](screenshots/09-docker-desktop.PNG)
+
+### 10. Dockerfile — Image Configuration
+
+![Dockerfile](screenshots/10-Dockerfile.PNG)
 
 ## ▶️ How to Run the Project
 
@@ -96,6 +156,14 @@ docker build -t jenkins-demo:latest .
 
 ### Step 3: Run the application
 
+If a container with this name is already running, remove it first:
+
+```bash
+docker rm -f jenkins-demo-app
+```
+
+Start the container:
+
 ```bash
 docker run -d \
   --name jenkins-demo-app \
@@ -113,15 +181,16 @@ docker run -d \
 docker ps
 ```
 
-## 📸 Project Verification
+## ✅ Project Verification
 
-The pipeline was executed successfully in Jenkins.
+The Jenkins pipeline was executed successfully.
 
 - ✅ GitHub repository checkout completed.
 - ✅ Docker image built successfully.
 - ✅ Basic application checks passed.
 - ✅ Docker container deployed successfully.
 - ✅ Jenkins build result: `SUCCESS`.
+- ✅ Application accessible at `http://localhost:8081`.
 
 ## 🎓 Key Learnings
 
@@ -144,7 +213,7 @@ The pipeline was executed successfully in Jenkins.
 
 **Ruchita Deshmukh**
 
-🔗 GitHub Repository: [jenkins-docker-cicd-elevate-labs](https://github.com/ruchi1792/jenkins-docker-cicd-elevate-labs)
+🔗 **GitHub Repository:** [jenkins-docker-cicd-elevate-labs](https://github.com/ruchi1792/jenkins-docker-cicd-elevate-labs)
 
 ---
 
